@@ -20,7 +20,7 @@
         extport2: '51414'
         intport3: '51414/udp'
         extport3: '51414'
-        image: 'slothcroissant/docker-qbittorrentvpn'
+        image: 'markusmcnugen/qbittorrentvpn'
 
     # CORE (MANDATORY) #############################################################
     - name: 'Including cron job'
