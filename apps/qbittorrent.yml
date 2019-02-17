@@ -16,7 +16,11 @@
         pgrole: 'qbittorrent'
         intport: '8080'
         extport: '8083'
-        image: 'linuxserver/qbittorrent'
+        intport2: '51414'
+        extport2: '51414'
+        intport3: '51414/udp'
+        extport3: '51414'
+        image: 'slothcroissant/docker-qbittorrentvpn'
 
     # CORE (MANDATORY) #############################################################
     - name: 'Including cron job'
@@ -50,6 +54,8 @@
         pg_env:
           PUID: 1000
           PGID: 1000
+          VPN_ENABLED: YES
+          INCOMING_PORT_ENV: 51414
 
     # MAIN DEPLOYMENT #############################################################
     - name: 'Checking for existing app data'
@@ -64,6 +70,8 @@
         pull: yes
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
+          - '{{ports.stdout}}{{extport2}}:{{intport2}}'
+          - '{{ports.stdout}}{{extport3}}:{{intport3}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
