@@ -52,8 +52,8 @@
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
-          PUID: 1000
-          PGID: 1000
+          PUID: 0
+          PGID: 0
           VPN_ENABLED: YES
           INCOMING_PORT_ENV: 51414
 
